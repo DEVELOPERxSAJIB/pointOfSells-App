@@ -9,6 +9,7 @@ import {
   SHOW_LOADING,
 } from "../../redux/products/actionTypes";
 import axios from "axios";
+import { baseURL } from "../../utils/baseURL";
 import { useEffect, useState } from "react";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import alertify from "alertifyjs";
@@ -24,7 +25,7 @@ const Item = () => {
   const getAllProduct = async () => {
     dispatch({ type: SHOW_LOADING });
     await axios
-      .get(`http://localhost:1010/product/get-all-product`, {
+      .get(`${baseURL}/product/get-all-product`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -48,7 +49,7 @@ const Item = () => {
 
       if (editingItem === null) {
         axios
-          .post(`http://localhost:1010/product/create-product`, value)
+          .post(`${baseURL}/product/create-product`, value)
           .then((res) => {
             alertify.success(res.data.message);
             setEditAddModal(false);
@@ -60,7 +61,7 @@ const Item = () => {
           });
       } else {
         axios
-          .patch(`http://localhost:1010/product/edit-product/${editingItem._id}`, value)
+          .patch(`${baseURL}/product/edit-product/${editingItem._id}`, value)
           .then((res) => {
             alertify.success(res.data.message);
             setEditAddModal(false);
@@ -85,7 +86,7 @@ const Item = () => {
         "It will delete this item from your cart",
         function () {
           axios
-            .delete(`http://localhost:1010/product/delete-product/${id}`)
+            .delete(`${baseURL}/product/delete-product/${id}`)
             .then((res) => {
               alertify.success(res.data.message);
               getAllProduct();

@@ -14,6 +14,7 @@ import {
 } from "../../redux/products/action";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { baseURL } from "../../utils/baseURL";
 import { useForm } from "antd/es/form/Form";
 import { useNavigate } from "react-router-dom";
 
@@ -104,7 +105,7 @@ const Cart = () => {
 
     try {
       axios
-        .post(`http://localhost:1010/bills/create-bill`, object)
+        .post(`${baseURL}/bills/create-bill`, object)
         .then((res) => {
           message.success(res.data.message);
           form.resetFields();

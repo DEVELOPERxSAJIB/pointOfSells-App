@@ -2,6 +2,7 @@ import { Table } from "antd";
 import DefaultLayout from "../../components/DefaultLayout/DefaultLayout";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { baseURL } from "../../utils/baseURL";
 
 const Customer = () => {
 
@@ -24,7 +25,7 @@ const Customer = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:1010/bills/all-bills`)
+      .get(`${baseURL}/bills/all-bills`)
       .then((res) => {
         const data = res.data.payload;
         data.reverse();

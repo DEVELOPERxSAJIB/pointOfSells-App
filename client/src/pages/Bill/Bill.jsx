@@ -3,6 +3,7 @@ import { Button, Modal, Table } from "antd";
 import DefaultLayout from "../../components/DefaultLayout/DefaultLayout";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { baseURL } from "../../utils/baseURL";
 import { EyeOutlined } from "@ant-design/icons";
 import { useReactToPrint } from "react-to-print";
 
@@ -73,7 +74,7 @@ const Bill = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:1010/bills/all-bills`)
+      .get(`${baseURL}/bills/all-bills`)
       .then((res) => {
         const data = res.data.payload;
         data.reverse();

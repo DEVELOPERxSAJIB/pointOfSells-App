@@ -2,6 +2,7 @@ import "./Home.css";
 import { useEffect, useState } from "react";
 import DefaultLayout from "../../components/DefaultLayout/DefaultLayout";
 import axios from "axios";
+import { baseURL } from "../../utils/baseURL";
 import { Col, Row } from "antd";
 import Product from "../../components/Product/Product";
 import { useDispatch } from "react-redux";
@@ -15,7 +16,7 @@ const Home = () => {
   const getAllProduct = async () => {
     dispatch({ type: SHOW_LOADING });
     await axios
-      .get(`http://localhost:1010/product/get-all-product`, {
+      .get(`${baseURL}/product/get-all-product`, {
         withCredentials: true,
       })
       .then((res) => {

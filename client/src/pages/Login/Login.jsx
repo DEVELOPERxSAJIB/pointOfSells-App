@@ -2,6 +2,7 @@ import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Form, Input, message } from "antd";
 import axios from "axios";
+import { baseURL } from "../../utils/baseURL";
 import { useForm } from "antd/es/form/Form";
 import { useDispatch } from "react-redux";
 import { HIDE_LOADING, SHOW_LOADING } from "../../redux/products/actionTypes";
@@ -16,7 +17,7 @@ const Login = () => {
     try {
       dispatch({ type: SHOW_LOADING });
       await axios
-        .post(`http://localhost:1010/user/user-login`, value, {
+        .post(`${baseURL}/user/user-login`, value, {
           withCredentials: true,
         })
         .then((res) => {

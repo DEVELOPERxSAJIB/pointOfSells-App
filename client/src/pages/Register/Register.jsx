@@ -2,6 +2,7 @@ import { Button, Form, Input, message } from "antd";
 import "./Register.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { baseURL } from "../../utils/baseURL";
 import { useDispatch } from "react-redux";
 import { HIDE_LOADING, SHOW_LOADING } from "../../redux/products/actionTypes";
 import { useForm } from "antd/es/form/Form";
@@ -17,7 +18,7 @@ const Register = () => {
     try {
       dispatch({ type: SHOW_LOADING });
       await axios
-        .post(`http://localhost:1010/user/create-user`, value, {
+        .post(`${baseURL}/user/create-user`, value, {
           withCredentials: true,
         })
         .then((res) => {
