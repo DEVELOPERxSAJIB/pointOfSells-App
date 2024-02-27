@@ -1,5 +1,18 @@
 ![POS Web App Logo!](client/public/pos_app_logo.png)
 
+## Live Preview
+
+```console
+ https://pos-app-client-zarj.onrender.com
+```
+
+***Login Access***
+
+```console
+   email : sajib@gmail.com
+   password : asdfg
+```
+
 ## Installation or Download Project
 
 Open Terminal (Git Bash)
